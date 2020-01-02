@@ -17,10 +17,12 @@ function Card(fg_url){
     })
 
     card.flipFore = function (){
+        await card.domPromise
         card.bdom.style.display = 'none'
         card.fdom.style.display = 'block'
     }
     card.flipBack = function (){
+        await card.domPromise
         card.bdom.style.display = 'block'
         card.fdom.style.display = 'none'
     }
