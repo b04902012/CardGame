@@ -3,9 +3,10 @@ function Card(fg_url){
 
     card.bdom = document.createElement('div')
     card.fdom = document.createElement('div')
+    card.getDom = function(){
+        return [card.bdom, card.fdom]
+    }
     card.domPromise = new Promise(function (res,rej){
-        card.bdom = document.createElement('div')
-        card.fdom = document.createElement('div')
         card.bdom.classList.add('cardback')
         card.fdom.classList.add('cardfore')
         card.bdom.style.width  = `{card_width}px`
