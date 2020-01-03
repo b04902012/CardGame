@@ -1,2 +1,2 @@
-card_width  = 10
-card_height = 10
+card_width  = 300
+card_height = 300

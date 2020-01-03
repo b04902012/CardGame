@@ -1,4 +1,5 @@
 function Card(fg_url){
+    console.log(fg_url)
     var card = this
 
     card.bdom = document.createElement('div')
@@ -9,22 +10,25 @@ function Card(fg_url){
     card.domPromise = new Promise(function (res,rej){
         card.bdom.classList.add('cardback')
         card.fdom.classList.add('cardfore')
-        card.bdom.style.width  = `{card_width}px`
-        card.fdom.style.width  = `{card_width}px`
-        card.bdom.style.height = `{card_height}px`
-        card.fdom.style.height = `{card_height}px`
-        card.fdom.style.background = `#000`
+        console.log(card.bdom)
+        card.bdom.style.width  = `${card_width}px`
+        card.fdom.style.width  = `${card_width}px`
+        card.bdom.style.height = `${card_height}px`
+        card.fdom.style.height = `${card_height}px`
+        card.fdom.style.positon= `absolute`
+        card.bdom.style.positon= `absolute`
+        card.fdom.style.background = fg_url
         res()
     })
 
-    card.flipFore = function (){
+    card.flipFore = async function (){
         await card.domPromise
         card.bdom.style.display = 'none'
-        card.fdom.style.display = 'block'
+        card.fdom.style.display = 'inline-block'
     }
-    card.flipBack = function (){
+    card.flipBack = async function (){
         await card.domPromise
-        card.bdom.style.display = 'block'
+        card.bdom.style.display = 'inline-block'
         card.fdom.style.display = 'none'
     }
 }
