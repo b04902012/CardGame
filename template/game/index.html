@@ -21,19 +21,23 @@
 	
 <script type="text/javascript">
 $(function(){
-    neusoft.matchingGame.deck.sort(shuffle);
     var $card=$(".card");
-	for(var i= 0;i<11;i++){
+	for(var i= 0;i<29;i++){
+        console.log(i)
 		$card.clone().appendTo($("#cards"));
 	}
     $(".card").each(function(index){
         $(this).css({
-            "left":(neusoft.matchingGame.cardWidth+20)*(index%4)+"px",
-			"top":(neusoft.matchingGame.cardHeight+20)*Math.floor(index/4)+"px"
+            "left":(neusoft.matchingGame.cardWidth+20)*(index%6)+"px",
+			"top":(neusoft.matchingGame.cardHeight+20)*Math.floor(index/6)+"px"
 		});
         var pattern=neusoft.matchingGame.deck.pop();
         $(this).data("pattern",pattern);
-        $(this).find(".back").addClass(pattern);
+        $(this).find(".back").addClass(pattern.slice(0,-2));
+        $(this).find(".back").css({
+            "background-position-x":(-neusoft.matchingGame.cardWidth * (parseInt(pattern.slice(-2))%13))+"px",
+            "background-position-y":(-neusoft.matchingGame.cardWidth * Math.floor(parseInt(pattern.slice(-2))/13))+"px",
+        })
         $(this).click(selectCard);
 	});
 });
