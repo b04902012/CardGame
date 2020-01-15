@@ -11,6 +11,8 @@
 <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
 
 <section id="game">
+    <div id="timer"></div><br>
+    <div id="control"></div><br>
     <div id="cards">
         <div class="card">
             <div class="face front"></div>
@@ -21,6 +23,8 @@
 	
 <script type="text/javascript">
 $(function(){
+    console.log(neusoft)
+    initializeTimer();
     var $card=$(".card");
 	for(var i= 0;i<29;i++){
         console.log(i)
@@ -40,6 +44,8 @@ $(function(){
         })
         $(this).click(selectCard);
 	});
+    $("#control").click(toggleControl)
+    window.requestAnimationFrame(renderTimer)
 });
 </script>
 

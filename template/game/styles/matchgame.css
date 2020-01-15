@@ -3,6 +3,34 @@ body
     text-align: center;
     background-image: url("../images/bg.jpg");
 }
+#timer{
+    font-size: 40px;
+    width: 83px;
+    height: 47px;
+    background-image: url("../images/timer.png");
+    vertical-align:middle;
+    color:white;
+    font-family:sans-serif;
+    position:absolute;
+    top:20px;
+    left: 50px;
+    min-width:150px;
+}
+#control{
+    width: 80px;
+    height: 33px;
+    position:absolute;
+    top: 20px;
+    right:50px;
+    min-width:150px;
+}
+.pause{
+    background-image: url("../images/pause.png");
+}
+.resume{
+    background-image: url("../images/resume.png");
+}
+
 
 #game
 {

@@ -54,3 +54,35 @@ function checkPattern(cards){
         });
     }
 }
+var timeLeft;
+var paused;
+var displayTimeLeft;
+var prevTimestamp;
+function initializeTimer(){
+    timeLeft=30e3;
+    paused=false;
+    displayTimeLeft=Math.ceil(timeLeft/1e3);
+    prevTimestamp=performance.now();
+}
+function renderTimer(timestamp){
+    if(!paused){
+        timeLeft -= timestamp - prevTimestamp;
+        $("#control").addClass('pause')
+        $("#control").removeClass('resume')
+    }
+    else{
+        $("#control").removeClass('pause')
+        $("#control").addClass('resume')
+    }
+    prevTimestamp = timestamp
+        
+    if(Math.ceil(timeLeft/1e3) != displayTimeLeft){
+        $("#timer").text(Math.ceil(timeLeft/1e3));
+        displayTimeLeft = Math.ceil(timeLeft/1e3);
+    }
+
+    window.requestAnimationFrame(renderTimer)
+}
+function toggleControl(){
+    paused = !paused;
+}
