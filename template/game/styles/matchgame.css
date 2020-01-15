@@ -4,25 +4,29 @@ body
     background-image: url("../images/bg.jpg");
 }
 #timer{
-    font-size: 40px;
-    width: 83px;
-    height: 47px;
+    position:absolute;
+    font-size: 60px;
+    padding:auto;
+    width: 166px;
+    height: 94px;
     background-image: url("../images/timer.png");
-    vertical-align:middle;
+    background-size: cover;
     color:white;
     font-family:sans-serif;
-    position:absolute;
+    vertical-align: middle;
+    display:block;
     top:20px;
     left: 50px;
-    min-width:150px;
 }
 #control{
-    width: 80px;
-    height: 33px;
     position:absolute;
+    width: 160px;
+    height: 66px;
     top: 20px;
     right:50px;
+    display: block;
     min-width:150px;
+    background-size: cover;
 }
 .pause{
     background-image: url("../images/pause.png");
@@ -49,8 +53,8 @@ body
 {
     width: 1600px;
     height: 1300px;
-    position: relative;
-	margin:30px auto;
+	margin-top:50px;
+    position:relative;
 }
 .card
 {
