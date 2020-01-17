@@ -26,10 +26,16 @@ for(var i=0;i<15;i++){
     neusoft.matchingGame.deck.push('text'+cards[i]);
 }
 neusoft.matchingGame.deck=randomPermutation(neusoft.matchingGame.deck)
+var timeLeft;
+var paused;
+var displayTimeLeft;
+var prevTimestamp;
 function shuffle(){
     return Math.random()>0.5 ? -1 : 1
 }
 function selectCard() {
+    if(paused)
+        return;
     var $fcard=$(".card-flipped");
     if($fcard.length>1){
         return;
@@ -54,15 +60,12 @@ function checkPattern(cards){
         });
     }
 }
-var timeLeft;
-var paused;
-var displayTimeLeft;
-var prevTimestamp;
 function initializeTimer(){
     timeLeft=30e3;
     paused=false;
     displayTimeLeft=Math.ceil(timeLeft/1e3);
     prevTimestamp=performance.now();
+    $("#time").text(displayTimeLeft);
 }
 function renderTimer(timestamp){
     if(!paused){
@@ -77,11 +80,12 @@ function renderTimer(timestamp){
     prevTimestamp = timestamp
         
     if(Math.ceil(timeLeft/1e3) != displayTimeLeft){
-        $("#timer").text(Math.ceil(timeLeft/1e3));
         displayTimeLeft = Math.ceil(timeLeft/1e3);
+        $("#time").text(displayTimeLeft);
     }
-
-    window.requestAnimationFrame(renderTimer)
+    if(timeLeft >= 0){
+        window.requestAnimationFrame(renderTimer)
+    }
 }
 function toggleControl(){
     paused = !paused;

@@ -6,17 +6,22 @@ body
 #timer{
     position:absolute;
     font-size: 60px;
-    padding:auto;
     width: 166px;
     height: 94px;
     background-image: url("../images/timer.png");
     background-size: cover;
     color:white;
     font-family:sans-serif;
-    vertical-align: middle;
-    display:block;
     top:20px;
-    left: 50px;
+    left: 50%; 
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+#time{
+    position: relative;
+    top: 50%; 
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 #control{
     position:absolute;

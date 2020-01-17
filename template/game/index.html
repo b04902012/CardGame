@@ -11,7 +11,7 @@
 <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
 
 <section id="game">
-    <div id="timer"></div><br>
+    <div id="timer"><div id="time"></div></div><br>
     <div id="control"></div><br>
     <div id="cards">
         <div class="card">
@@ -25,6 +25,7 @@
 $(function(){
     console.log(neusoft)
     initializeTimer();
+    window.requestAnimationFrame(renderTimer)
     var $card=$(".card");
 	for(var i= 0;i<29;i++){
         console.log(i)
@@ -43,9 +44,8 @@ $(function(){
             "background-position-y":(-neusoft.matchingGame.cardWidth * Math.floor(parseInt(pattern.slice(-2))/13))+"px",
         })
         $(this).click(selectCard);
-	});
+    });
     $("#control").click(toggleControl)
-    window.requestAnimationFrame(renderTimer)
 });
 </script>
 
