@@ -39,6 +39,36 @@ body
 .resume{
     background-image: url("../images/resume.png");
 }
+#gameover{
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-color:rgba(0,0,0,0.5);
+    z-index:100;
+}
+#score{
+    position:absolute;
+    width:408px;
+    height:448px;
+    background-image: url("../images/score.png");
+    background-size:cover;
+    left:50%;
+    top:50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+#restart{
+    position:absolute;
+    width:264px;
+    height:54px;
+    background-image: url("../images/restart.png");
+    background-size:cover;
+    left:50%;
+    bottom:14px;
+    -webkit-transform: translateX(-50%)translateX(2px);
+    transform: translateX(-50%)translateX(2px);
+
+}
 
 
 #game

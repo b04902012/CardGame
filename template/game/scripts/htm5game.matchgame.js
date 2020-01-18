@@ -61,11 +61,12 @@ function checkPattern(cards){
     }
 }
 function initializeTimer(){
-    timeLeft=30e3;
+    timeLeft=10e3;
     paused=false;
     displayTimeLeft=Math.ceil(timeLeft/1e3);
     prevTimestamp=performance.now();
     $("#time").text(displayTimeLeft);
+    $("#gameover").hide();
 }
 function renderTimer(timestamp){
     if(!paused){
@@ -84,7 +85,10 @@ function renderTimer(timestamp){
         $("#time").text(displayTimeLeft);
     }
     if(timeLeft >= 0){
-        window.requestAnimationFrame(renderTimer)
+        window.requestAnimationFrame(renderTimer);
+    }
+    else{
+        $("#gameover").show();
     }
 }
 function toggleControl(){
