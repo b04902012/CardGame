@@ -81,7 +81,7 @@ function renderTimer(timestamp){
     prevTimestamp = timestamp
         
     if(Math.ceil(timeLeft/1e3) != displayTimeLeft){
-        displayTimeLeft = Math.ceil(timeLeft/1e3);
+        displayTimeLeft = Math.max(Math.ceil(timeLeft/1e3),0);
         $("#time").text(displayTimeLeft);
     }
     if(timeLeft >= 0){

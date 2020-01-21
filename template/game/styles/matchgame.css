@@ -64,9 +64,9 @@ body
     background-image: url("../images/restart.png");
     background-size:cover;
     left:50%;
-    bottom:14px;
-    -webkit-transform: translateX(-50%)translateX(2px);
-    transform: translateX(-50%)translateX(2px);
+    bottom:10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 
 }
 
