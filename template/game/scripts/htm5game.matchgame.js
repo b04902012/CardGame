@@ -26,7 +26,7 @@ for(var i=0;i<(number_cards[0]*number_cards[1])/2;i++){
     neusoft.matchingGame.deck.push('text'+cards[i]);
 }
 neusoft.matchingGame.deck=randomPermutation(neusoft.matchingGame.deck)
-var timeLeft;
+var timeElapsed;
 var paused;
 var displayTimeLeft;
 var prevTimestamp;
@@ -60,16 +60,16 @@ function checkPattern(cards){
     }
 }
 function initializeTimer(){
-    timeLeft=timeLimit * 1e3;
+    timeElapsed=0;
     paused=false;
-    displayTimeLeft=Math.ceil(timeLeft/1e3);
+    displayTimeElapsed =Math.ceil(timeElapsed/1e3);
     prevTimestamp=performance.now();
-    $("#time").text(displayTimeLeft);
+    $("#time").text(displayTimeElapsed);
     $("#gameover").hide();
 }
 function renderTimer(timestamp){
     if(!paused){
-        timeLeft -= timestamp - prevTimestamp;
+        timeElapsed += timestamp - prevTimestamp;
         $("#control").addClass('pause')
         $("#control").removeClass('resume')
     }
@@ -79,16 +79,16 @@ function renderTimer(timestamp){
     }
     prevTimestamp = timestamp
         
-    if(Math.ceil(timeLeft/1e3) != displayTimeLeft){
-        displayTimeLeft = Math.max(Math.ceil(timeLeft/1e3),0);
-        $("#time").text(displayTimeLeft);
+    if(Math.ceil(timeElapsed/1e3) != displayTimeElapsed){
+        displayTimeElapsed = Math.max(Math.ceil(timeElapsed/1e3),0);
+        $("#time").text(displayTimeElapsed);
     }
-    if(timeLeft >= 0 && $(".card").length > 0){
+    if($(".card").length > 0){
         window.requestAnimationFrame(renderTimer);
     }
     else{
         $("#gameover").show();
-        $("#score_content").text(Math.max(Math.ceil(timeLeft/1e3),0))
+        $("#second").text(Math.max(Math.ceil(timeElapsed/1e3),0))
         $("#restart").click(function(){
             location.reload(false)
         })
