@@ -15,13 +15,13 @@ function randomPermutation(array){
 var neusoft={};
 neusoft.matchingGame={};
 neusoft.matchingGame.cardWidth=250;neusoft.matchingGame.cardHeight=250;
-var score=0;
 var cards=[];
 for(var i=0;i<52;i++){
     cards.push(("0"+i.toString()).slice(-2));
 }
+cards=randomPermutation(cards)
 neusoft.matchingGame.deck=[]
-for(var i=0;i<15;i++){
+for(var i=0;i<(number_cards[0]*number_cards[1])/2;i++){
     neusoft.matchingGame.deck.push('picture'+cards[i]);
     neusoft.matchingGame.deck.push('text'+cards[i]);
 }
@@ -56,12 +56,11 @@ function checkPattern(cards){
         $(cards).addClass("card-removed")
         .bind("webkitTransitionEnd",function(){
             $(this).remove();
-            score++;
         });
     }
 }
 function initializeTimer(){
-    timeLeft=10e3;
+    timeLeft=timeLimit * 1e3;
     paused=false;
     displayTimeLeft=Math.ceil(timeLeft/1e3);
     prevTimestamp=performance.now();
@@ -84,11 +83,15 @@ function renderTimer(timestamp){
         displayTimeLeft = Math.max(Math.ceil(timeLeft/1e3),0);
         $("#time").text(displayTimeLeft);
     }
-    if(timeLeft >= 0){
+    if(timeLeft >= 0 && $(".card").length > 0){
         window.requestAnimationFrame(renderTimer);
     }
     else{
         $("#gameover").show();
+        $("#score_content").text(Math.max(Math.ceil(timeLeft/1e3),0))
+        $("#restart").click(function(){
+            location.reload(false)
+        })
     }
 }
 function toggleControl(){
