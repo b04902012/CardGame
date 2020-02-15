@@ -29,12 +29,10 @@ $(function(){
     $("#game").height(neusoft.matchingGame.cardHeight*number_cards[1]+250)
     $("#cards").width(neusoft.matchingGame.cardWidth*number_cards[0]+100)
     $("#cards").height(neusoft.matchingGame.cardHeight*number_cards[1]+50)
-    console.log(neusoft)
     initializeTimer();
     window.requestAnimationFrame(renderTimer)
     var $card=$(".card");
 	for(var i= 0;i<number_cards[0]*number_cards[1]-1;i++){
-        console.log(i)
 		$card.clone().appendTo($("#cards"));
 	}
     $(".card").each(function(index){
